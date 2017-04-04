@@ -1,10 +1,13 @@
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Iterator;
 
+import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -31,7 +34,7 @@ public class FenetrePrincipale
 	
 	private void afficherFenetre()
 	{
-		this.fenetrePrincipale.setTitle("Seismes");
+		this.fenetrePrincipale.setTitle("Exoplanete");
 		this.fenetrePrincipale.setSize(500, 500); 
 		this.fenetrePrincipale.setResizable(false);
 		this.fenetrePrincipale.setLocationRelativeTo(null);
@@ -56,6 +59,11 @@ public class FenetrePrincipale
 
 	private JPanel getOnglet1()
 	{
+		JPanel panel = new JPanel();
+		GridLayout grid = new GridLayout(0,1);
+		//JTextField field = new JTextField();
+		panel.setLayout(grid);
+		
 		// Préparation (une seule fois)
 		Configuration configuration = new Configuration();
 		configuration.addClass(Exoplanete.class);
@@ -67,8 +75,14 @@ public class FenetrePrincipale
 		Iterator listeExoplanete = session.createQuery("from Exoplanete ").iterate();
 		while(listeExoplanete.hasNext())
 		{
+			JTextField field = new JTextField();
 			Exoplanete exoplanete = (Exoplanete)listeExoplanete.next(); // ca prend le constructeur vide
-			System.out.println("Exoplanete : " + exoplanete.getPlanete());
+			//System.out.println("Exoplanete : " + exoplanete.getPlanete());
+			field.setText("Exoplanete : " + exoplanete.getPlanete());
+			
+			field.setPreferredSize(new Dimension( 200, 200 ));
+			
+			panel.add(field);
 		}
 		
 		// Ecriture
@@ -79,7 +93,7 @@ public class FenetrePrincipale
 		session.close();
 		sessionControleur.close();
 		
-		return null;
+		return panel;
 		
 	}
 	
