@@ -13,14 +13,14 @@ public class Exoplanete {
 	protected String periode;
 	protected String distance;
 	protected String zone;
-	protected float ist;
-	protected float sph;
+	protected Float ist;
+	protected Float sph;
 	protected String hzd;
 	protected String hzc;
 	protected String hza;
 	protected String pClasse;
 	protected String hClasse;
-	protected float phi;
+	protected Float phi;
 	protected String distance2;
 	protected String status;
 	protected String decouverte;
@@ -89,19 +89,19 @@ public class Exoplanete {
 		this.zone = zone;
 	}
 
-	public float getIst() {
+	public Float getIst() {
 		return ist;
 	}
 
-	public void setIst(float ist) {
+	public void setIst(Float ist) {
 		this.ist = ist;
 	}
 
-	public float getSph() {
+	public Float getSph() {
 		return sph;
 	}
 
-	public void setSph(float sph) {
+	public void setSph(Float sph) {
 		this.sph = sph;
 	}
 
@@ -145,11 +145,11 @@ public class Exoplanete {
 		this.hClasse = hClasse;
 	}
 
-	public float getPhi() {
+	public Float getPhi() {
 		return phi;
 	}
 
-	public void setPhi(float phi) {
+	public void setPhi(Float phi) {
 		this.phi = phi;
 	}
 
