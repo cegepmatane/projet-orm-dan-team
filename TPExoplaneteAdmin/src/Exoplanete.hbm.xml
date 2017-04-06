@@ -18,17 +18,17 @@
 	<property name="periode" column="periode" type="string" not-null="true"/>
 	<property name="distance" column="distance" type="string" not-null="true"/>
 	<property name="zone" column="zone" type="string" not-null="true"/>
-	<property name="ist" column="ist" type="float" not-null="true"/>
-	<property name="sph" column="sph" type="float" not-null="true"/>
-	<property name="hzd" column="hzd" type="string" not-null="true"/>
-	<property name="hzc" column="hzc" type="string" not-null="true"/>
-	<property name="hza" column="hza" type="string" not-null="true"/>
-	<property name="pClasse" column="pClasse" type="string" not-null="true"/>
-	<property name="hClasse" column="hClasse" type="string" not-null="true"/>
-	<property name="phi" column="phi" type="float" not-null="true"/>
-	<property name="distance2" column="distance2" type="string" not-null="true"/>
-	<property name="status" column="status" type="string" not-null="true"/>
-	<property name="decouverte" column="decouverte" type="string" not-null="true"/>
+	<property name="ist" column="ist" type="float" not-null="false"/>
+	<property name="sph" column="sph" type="float" not-null="false"/>
+	<property name="hzd" column="hzd" type="string" not-null="false"/>
+	<property name="hzc" column="hzc" type="string" not-null="false"/>
+	<property name="hza" column="hza" type="string" not-null="false"/>
+	<property name="pClasse" column="pClasse" type="string" not-null="false"/>
+	<property name="hClasse" column="hClasse" type="string" not-null="false"/>
+	<property name="phi" column="phi" type="float" not-null="false"/>
+	<property name="distance2" column="distance2" type="string" not-null="false"/>
+	<property name="status" column="status" type="string" not-null="false"/>
+	<property name="decouverte" column="decouverte" type="string" not-null="false"/>
 
 </class>
 

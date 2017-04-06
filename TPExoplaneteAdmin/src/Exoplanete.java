@@ -2,6 +2,36 @@
 
 public class Exoplanete {
 	
+	public Exoplanete(String planete, String etoile, String typeEtoile, String masse, String rayon, String flux,
+			String temperature, String periode, String distance, String zone, String ist, String sph, String hzd,
+			String hzc, String hza, String pClasse, String hClasse, String phi, String distance2, String status,
+			String decouverte) {
+		super();
+		this.planete = planete;
+		this.etoile = etoile;
+		this.typeEtoile = typeEtoile;
+		this.masse = masse;
+		this.rayon = rayon;
+		this.flux = flux;
+		this.temperature = temperature;
+		this.periode = periode;
+		this.distance = distance;
+		this.zone = zone;
+		this.ist = Float.parseFloat(ist);
+		this.sph = Float.parseFloat(sph);
+		this.hzd = hzd;
+		this.hzc = hzc;
+		this.hza = hza;
+		this.pClasse = pClasse;
+		this.hClasse = hClasse;
+		this.phi = Float.parseFloat(phi);
+		this.distance2 = distance2;
+		this.status = status;
+		this.decouverte = decouverte;
+	}
+	
+	public static final int NBR_DE_VAR = 21;
+
 	protected int id;
 	protected String planete;
 	protected String etoile;
@@ -24,6 +54,36 @@ public class Exoplanete {
 	protected String distance2;
 	protected String status;
 	protected String decouverte;
+	
+	public static String getNomVar(int i)
+	{
+		String[] tab = new String[21];
+		
+		tab[0] = "Planete";
+		tab[1] = "Etoile";
+		tab[2] = "Type d'Etoile";
+		tab[3] = "Masse";
+		tab[4] = "Rayon";
+		tab[5] = "flux";
+		tab[6] = "Temperature";
+		tab[7] = "Periode";
+		tab[8] = "Distance";
+		tab[9] = "Zone";
+		tab[10] = "ist";
+		tab[11] = "sph";
+		tab[12] = "hzd";
+		tab[13] = "hzc";
+		tab[14] = "hza";
+		tab[15] = "pClasse";
+		tab[16] = "hClasse";
+		tab[17] = "phi";
+		tab[18] = "Distance 2";
+		tab[19] = "Status";
+		tab[20] = "Decouverte";
+		
+		return tab[i];
+		
+	}
 	
 	public String getTypeEtoile() {
 		return typeEtoile;

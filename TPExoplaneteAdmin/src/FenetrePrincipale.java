@@ -1,3 +1,5 @@
+import java.awt.Component;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -5,7 +7,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -20,9 +24,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class FenetrePrincipale implements MouseListener
+public class FenetrePrincipale implements MouseListener, ActionListener
 {
 	private JFrame fenetrePrincipale;
+	private JFrame formulaire;
+	private JPanel panelForm;
+	private JTextField[] tabTextField;
 	
 	public FenetrePrincipale()
 	{
@@ -85,132 +92,51 @@ public class FenetrePrincipale implements MouseListener
 	
 	private void newFormulaire()
 	{
-		JFrame formulaire = new JFrame();
+		this.formulaire = null;
+		this.formulaire = new JFrame();
 		
-		formulaire.setTitle("Formulaire - Ajouter Exoplanete");
-		formulaire.setSize(700, 700); 
-		formulaire.setResizable(true);
-		formulaire.setLocationRelativeTo(null);
-		formulaire.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.formulaire.setTitle("Formulaire - Ajouter Exoplanete");
+		this.formulaire.setSize(700, 700); 
+		this.formulaire.setResizable(true);
+		this.formulaire.setLocationRelativeTo(null);
+		this.formulaire.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
-		formulaire.add(constructionFormulaire());
+		this.panelForm = this.constructionFormulaire();
 		
-		formulaire.setVisible(true);
+		this.formulaire.add(this.panelForm);
+		
+		this.formulaire.setVisible(true);
 	}
 	
 	private JPanel constructionFormulaire()
 	{
 		JPanel panel = new JPanel();
+		JLabel[] tabLabel = new JLabel[Exoplanete.NBR_DE_VAR];
+		this.tabTextField = new JTextField[Exoplanete.NBR_DE_VAR];
+		String[] nomLabel = new String[Exoplanete.NBR_DE_VAR];
+		
+		for(int compteur = 0; compteur < Exoplanete.NBR_DE_VAR; compteur++)
+		{
+			nomLabel[compteur] = Exoplanete.getNomVar(compteur);
+		}
 		
 		GridLayout grid = new GridLayout(0,2);
 		panel.setLayout(grid);
 		
-		JLabel myLabel = new JLabel("Planete");
-		JTextField field = new JTextField();
+		for(int compteur2 = 0; compteur2 < Exoplanete.NBR_DE_VAR; compteur2++)
+		{
+			tabLabel[compteur2] = new JLabel(Exoplanete.getNomVar(compteur2));
+			tabTextField[compteur2] = new JTextField();
+			tabTextField[compteur2].addActionListener(this);
+			
+			panel.add(tabLabel[compteur2]);
+			panel.add(tabTextField[compteur2]);
+		}
 		
-		JLabel myLabel2 = new JLabel("Etoile");
-		JTextField field2 = new JTextField();
-		
-		JLabel myLabel3 = new JLabel("Type d'Etoile");
-		JTextField field3 = new JTextField();
-		
-		JLabel myLabel4 = new JLabel("Masse");
-		JTextField field4 = new JTextField();
-		
-		JLabel myLabel5 = new JLabel("Rayon");
-		JTextField field5 = new JTextField();
-		
-		JLabel myLabel6 = new JLabel("Flux");
-		JTextField field6 = new JTextField();
-		
-		JLabel myLabel7 = new JLabel("Temperature");
-		JTextField field7 = new JTextField();
-		
-		JLabel myLabel8 = new JLabel("Periode");
-		JTextField field8 = new JTextField();
-		
-		JLabel myLabel9 = new JLabel("Distance");
-		JTextField field9 = new JTextField();
-		
-		JLabel myLabel10 = new JLabel("Zone");
-		JTextField field10 = new JTextField();
-		
-		JLabel myLabel11 = new JLabel("ist");
-		JTextField field11 = new JTextField();
-		
-		JLabel myLabel12 = new JLabel("sph");
-		JTextField field12 = new JTextField();
-		
-		JLabel myLabel13 = new JLabel("hzd");
-		JTextField field13 = new JTextField();
-		
-		JLabel myLabel14 = new JLabel("hzc");
-		JTextField field14 = new JTextField();
-		
-		JLabel myLabel15 = new JLabel("hza");
-		JTextField field15 = new JTextField();
-		
-		JLabel myLabel16 = new JLabel("pClasse");
-		JTextField field16 = new JTextField();
-		
-		JLabel myLabel17 = new JLabel("hClasse");
-		JTextField field17 = new JTextField();
-		
-		JLabel myLabel18 = new JLabel("phi");
-		JTextField field18 = new JTextField();
-		
-		JLabel myLabel19 = new JLabel("Distance 2");
-		JTextField field19 = new JTextField();
-		
-		JLabel myLabel20 = new JLabel("Status");
-		JTextField field20 = new JTextField();
-		
-		JLabel myLabel21 = new JLabel("Decouverte");
-		JTextField field21 = new JTextField();
-		
-		panel.add(myLabel);
-		panel.add(field);
-		panel.add(myLabel2);
-		panel.add(field2);
-		panel.add(myLabel3);
-		panel.add(field3);
-		panel.add(myLabel4);
-		panel.add(field4);
-		panel.add(myLabel5);
-		panel.add(field5);
-		panel.add(myLabel6);
-		panel.add(field6);
-		panel.add(myLabel7);
-		panel.add(field7);
-		panel.add(myLabel8);
-		panel.add(field8);
-		panel.add(myLabel9);
-		panel.add(field9);
-		panel.add(myLabel10);
-		panel.add(field10);
-		panel.add(myLabel11);
-		panel.add(field11);
-		panel.add(myLabel12);
-		panel.add(field12);
-		panel.add(myLabel13);
-		panel.add(field13);
-		panel.add(myLabel14);
-		panel.add(field14);
-		panel.add(myLabel15);
-		panel.add(field15);
-		panel.add(myLabel16);
-		panel.add(field16);
-		panel.add(myLabel17);
-		panel.add(field17);
-		panel.add(myLabel18);
-		panel.add(field18);
-		panel.add(myLabel19);
-		panel.add(field19);
-		panel.add(myLabel20);
-		panel.add(field20);
-		panel.add(myLabel21);
-		panel.add(field21);
-		
+		JButton bouton = new JButton("Ajouter L'Exoplanete");
+		bouton.addActionListener(this);
+		panel.add(bouton);
+				
 		return panel;
 	}
 
@@ -219,29 +145,72 @@ public class FenetrePrincipale implements MouseListener
 		
 		newFormulaire();
 	}
+	
+	@Override
+	public void actionPerformed(ActionEvent arg0) 
+	{
+		// Préparation (une seule fois)
+		Configuration configuration = new Configuration();
+		configuration.addClass(Exoplanete.class);
+		SessionFactory sessionControleur = configuration.buildSessionFactory();
+		Session session = sessionControleur.openSession();
+		
+		// Ecriture
+		Exoplanete newPlanete = new Exoplanete(this.tabTextField[0].getText(), this.tabTextField[1].getText(), this.tabTextField[2].getText(), this.tabTextField[3].getText(), this.tabTextField[4].getText(), this.tabTextField[5].getText(),
+				this.tabTextField[6].getText(), this.tabTextField[7].getText(), this.tabTextField[8].getText(), this.tabTextField[9].getText(), this.tabTextField[10].getText(), this.tabTextField[11].getText(), this.tabTextField[12].getText(),
+				this.tabTextField[13].getText(), this.tabTextField[14].getText(), this.tabTextField[15].getText(), this.tabTextField[16].getText(), this.tabTextField[17].getText(), this.tabTextField[18].getText(), this.tabTextField[19].getText(),
+				this.tabTextField[20].getText());
+		session.save(newPlanete);
+		
+		
+		// Nettoyage final (une seule fois)
+		session.close();
+		sessionControleur.close();
+		
+		for(int element = 0; element < this.tabTextField.length; element++)
+		{
+			this.tabTextField[element].setText("");
+		}
+	}
+	
+	public List<JTextField> getJTextField(Component[] components)
+	{
+		List<JTextField> text = new ArrayList<JTextField>();
+		
+		for(int element = 0; element < components.length; element++)
+		{
+			if(components[element].getClass().equals(JTextField.class))
+			{
+				text.add( (JTextField)components[element] );
+			}
+		}
+		return text;
+	}
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+		//  Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+		//  Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+		//  Auto-generated method stub
 		
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
+		//  Auto-generated method stub
 		
 	}
+
+
 }
 
