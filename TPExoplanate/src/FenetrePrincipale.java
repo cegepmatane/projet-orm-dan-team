@@ -35,8 +35,8 @@ public class FenetrePrincipale
 	private void afficherFenetre()
 	{
 		this.fenetrePrincipale.setTitle("Exoplanete");
-		this.fenetrePrincipale.setSize(500, 500); 
-		this.fenetrePrincipale.setResizable(false);
+		this.fenetrePrincipale.setSize(700, 700); 
+		this.fenetrePrincipale.setResizable(true);
 		this.fenetrePrincipale.setLocationRelativeTo(null);
 		this.fenetrePrincipale.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -49,7 +49,7 @@ public class FenetrePrincipale
 	{
 		JTabbedPane tableauOnglet = new JTabbedPane();
 		
-		tableauOnglet.addTab("Onglet 1", getOnglet1());
+		tableauOnglet.addTab("Liste d'exoplanetes", getOnglet1());
 		tableauOnglet.addTab("Onglet 2", getOnglet2());
 		tableauOnglet.addTab("Onglet 3", getOnglet3());
 		
@@ -80,7 +80,7 @@ public class FenetrePrincipale
 			//System.out.println("Exoplanete : " + exoplanete.getPlanete());
 			field.setText("Exoplanete : " + exoplanete.getPlanete());
 			
-			field.setPreferredSize(new Dimension( 200, 200 ));
+			//field.setPreferredSize(new Dimension( 200, 200 ));
 			
 			panel.add(field);
 		}
