@@ -19,9 +19,14 @@ public class PanneauOnglets extends JPanel
 	
 	private JTabbedPane onglets;
 	
-	private JPanel ongletExoplanette;
-	private JPanel ongletSauvegarde;
-	private JPanel ongletRecherche;
+	private JPanel panneauOngletClient;
+	private JPanel panneauOngletAdmin;
+	
+	private JPanel panneauOngletExoplanette;
+	private JPanel panneauOngletMemento;
+	private JPanel panneauOngletRecherche;
+
+	private JTabbedPane ongletsClient;
 	
 	public PanneauOnglets()
 	{
@@ -45,13 +50,21 @@ public class PanneauOnglets extends JPanel
 	{
 		onglets = new JTabbedPane();
 		
-		ongletExoplanette = new JPanel();
-		ongletSauvegarde = new JPanel();
-		ongletRecherche = new JPanel();
+		panneauOngletClient = new JPanel(new GridLayout(1, 1));
+		panneauOngletAdmin = new JPanel(new GridLayout(1, 1));
 		
-		onglets.addTab("Exoplanete", ongletExoplanette);
-		onglets.addTab("Sauvegarde", ongletSauvegarde);
-		onglets.addTab("Recherche", ongletRecherche);
+		panneauOngletExoplanette = new JPanel();
+		panneauOngletMemento = new JPanel();
+		panneauOngletRecherche = new JPanel();
+		
+		ongletsClient = new JTabbedPane();
+		ongletsClient.addTab("Exoplanete", panneauOngletExoplanette);
+		ongletsClient.addTab("Mémento", panneauOngletMemento);
+		ongletsClient.addTab("Recherche", panneauOngletRecherche);
+		panneauOngletClient.add(ongletsClient);
+		
+		onglets.add("Client", panneauOngletClient);
+		onglets.add("Admin", panneauOngletAdmin);
 	}
 	
 	@SuppressWarnings("rawtypes")
@@ -81,7 +94,7 @@ public class PanneauOnglets extends JPanel
 		
 		panneauListeExoplanette.add(scrollPane, BorderLayout.CENTER);
 		
-		ongletExoplanette.setLayout(new BorderLayout());
-		ongletExoplanette.add(panneauListeExoplanette, BorderLayout.CENTER);
+		panneauOngletExoplanette.setLayout(new BorderLayout());
+		panneauOngletExoplanette.add(panneauListeExoplanette, BorderLayout.CENTER);
 	}
 }

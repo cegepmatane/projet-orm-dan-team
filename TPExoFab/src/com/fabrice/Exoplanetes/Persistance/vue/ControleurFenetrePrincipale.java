@@ -32,6 +32,9 @@ public class ControleurFenetrePrincipale
 		this.session = session;
 		
 		construireListeExoplanette();
+		
+		session.close();
+		sessionControleur.close();
 	}
 	
 	@SuppressWarnings({ "rawtypes", "deprecation" })

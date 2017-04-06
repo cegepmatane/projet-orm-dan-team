@@ -1,3 +1,4 @@
+package com.fabrice.Exoplanetes.Persistance;
 import com.fabrice.Exoplanetes.Persistance.vue.ControleurFenetrePrincipale;
 import com.fabrice.Exoplanetes.Persistance.vue.FenetrePricipale;
 
