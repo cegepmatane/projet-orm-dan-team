@@ -1,4 +1,4 @@
-package com.fabrice.Exoplanetes.Persistance.vue;
+package com.fabrice.Exoplanetes.vue.panneau;
 
 import java.awt.GridLayout;
 

@@ -1,4 +1,4 @@
-package com.fabrice.Exoplanetes.Persistance;
+package com.fabrice.Exoplanetes.orm;
 
 
 public class Exoplanete 

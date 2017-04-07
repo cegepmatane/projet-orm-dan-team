@@ -1,4 +1,4 @@
-package com.fabrice.Exoplanetes.Persistance.vue;
+package com.fabrice.Exoplanetes.vue;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -8,7 +8,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.fabrice.Exoplanetes.Persistance.Exoplanete;
+import com.fabrice.Exoplanetes.orm.Exoplanete;
+import com.fabrice.Exoplanetes.vue.panneau.PanneauOnglets;
 
 public class ControleurFenetrePrincipale 
 {
@@ -25,7 +26,7 @@ public class ControleurFenetrePrincipale
 		this.panneauOnglets = this.fenetrePricipale.getPanneauOnglets();
 		
 		Configuration configuration = new Configuration();
-		configuration.addClass(com.fabrice.Exoplanetes.Persistance.Exoplanete.class);
+		configuration.addClass(com.fabrice.Exoplanetes.orm.Exoplanete.class);
 		SessionFactory sessionControleur = configuration.buildSessionFactory();
 		Session session = sessionControleur.openSession();
 		

@@ -1,9 +1,11 @@
-package com.fabrice.Exoplanetes.Persistance.vue;
+package com.fabrice.Exoplanetes.vue;
 
 import java.awt.GridLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import com.fabrice.Exoplanetes.vue.panneau.PanneauOnglets;
 
 @SuppressWarnings("serial")
 public class FenetrePricipale extends JFrame
