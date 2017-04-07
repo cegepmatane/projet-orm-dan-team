@@ -22,14 +22,18 @@ import javax.swing.text.JTextComponent;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 public class FenetrePrincipale implements MouseListener, ActionListener
 {
 	private JFrame fenetrePrincipale;
 	private JFrame formulaire;
+	private JFrame deleteFormulaire;
+	protected JTextField deleteId;
 	private JPanel panelForm;
 	private JTextField[] tabTextField;
+	private JButton buttonDelete;
 	
 	public FenetrePrincipale()
 	{
@@ -82,9 +86,17 @@ public class FenetrePrincipale implements MouseListener, ActionListener
 			panel.add(field);
 		}
 		
+		this.buttonDelete = new JButton("Supprimer Une Exoplanete");
+		this.buttonDelete.addActionListener(new ActionListener(){
+			   public void actionPerformed(ActionEvent e){
+				   contruireDeleteFrame();
+			   }
+			});
 		// Nettoyage final (une seule fois)
 		session.close();
 		sessionControleur.close();
+		
+		panel.add(this.buttonDelete);
 		
 		return panel;
 		
@@ -173,6 +185,8 @@ public class FenetrePrincipale implements MouseListener, ActionListener
 		}
 	}
 	
+	
+	/*
 	public List<JTextField> getJTextField(Component[] components)
 	{
 		List<JTextField> text = new ArrayList<JTextField>();
@@ -186,7 +200,114 @@ public class FenetrePrincipale implements MouseListener, ActionListener
 		}
 		return text;
 	}
-
+*/
+	
+	
+	private void contruireDeleteFrame()
+	{
+		this.deleteFormulaire = null;
+		this.deleteFormulaire = new JFrame();
+		
+		this.deleteFormulaire.setTitle("Formulaire - Supprimer Exoplanete");
+		this.deleteFormulaire.setSize(700, 700); 
+		this.deleteFormulaire.setResizable(true);
+		this.deleteFormulaire.setLocationRelativeTo(null);
+		this.deleteFormulaire.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
+		this.deleteFormulaire.setVisible(true);
+		
+		JPanel panel = new JPanel();
+		
+		GridLayout grid = new GridLayout(0,1);
+		//JTextField field = new JTextField();
+		panel.setLayout(grid);
+		
+		// Préparation (une seule fois)
+		Configuration configuration = new Configuration();
+		configuration.addClass(Exoplanete.class);
+		SessionFactory sessionControleur = configuration.buildSessionFactory();
+		Session session = sessionControleur.openSession();
+		
+		// Lecture
+		@SuppressWarnings("deprecation")
+		Iterator listeExoplanete = session.createQuery("from Exoplanete ").iterate();
+		while(listeExoplanete.hasNext())
+		{
+			JTextField field = new JTextField();
+			Exoplanete exoplanete = (Exoplanete)listeExoplanete.next(); // ca prend le constructeur vide
+			//System.out.println("Exoplanete : " + exoplanete.getPlanete());
+			field.setText("id" + exoplanete.getId() + "Exoplanete : " + exoplanete.getPlanete());
+			
+			//field.addMouseListener(this);
+			//field.setPreferredSize(new Dimension( 200, 200 ));
+			
+			panel.add(field);
+		}
+		
+		// Nettoyage final (une seule fois)
+		session.close();
+		sessionControleur.close();
+		
+		JButton button = new JButton("Supprimer");
+		this.deleteId = null;
+		this.deleteId = new JTextField();
+		
+		button.addActionListener(new ActionListener(){
+			   public void actionPerformed(ActionEvent e){
+				   
+					Configuration configuration = new Configuration();
+					configuration.addClass(Exoplanete.class);
+					SessionFactory sessionControleur = configuration.buildSessionFactory();
+					Session session = sessionControleur.openSession();
+					Transaction transaction = session.beginTransaction();
+					
+					// Lecture
+					@SuppressWarnings("deprecation")
+					Iterator listeExoplanete = session.createQuery("from Exoplanete ").iterate();
+					int idPlanete = Integer.parseInt(FenetrePrincipale.this.deleteId.getText());
+					while(listeExoplanete.hasNext())
+					{
+						//JTextField field = new JTextField();
+						Exoplanete exoplanete = (Exoplanete)listeExoplanete.next(); // ca prend le constructeur vide
+						
+						int id = exoplanete.getId();
+						
+						
+						
+						if(exoplanete.getId() == idPlanete)
+						{
+							/*
+							Exoplanete newPlanete = new Exoplanete(exoplanete.getId(), exoplanete.getPlanete(), exoplanete.getEtoile(), exoplanete.getTypeEtoile(), exoplanete.getMasse(), exoplanete.getRayon(),
+									exoplanete.getFlux(), exoplanete.getTemperature(), exoplanete.getPeriode(), exoplanete.getDistance(), exoplanete.getZone(), exoplanete.getIst(), exoplanete.getSph(),
+									exoplanete.getHzd(), exoplanete.getHzc(), exoplanete.getHza(), exoplanete.getpClasse(), exoplanete.gethClasse(), exoplanete.getPhi(), exoplanete.getDistance2(),
+									exoplanete.getStatus(),exoplanete.getDecouverte());
+							*/
+							
+							Exoplanete p = session.load(Exoplanete.class, idPlanete);
+							session.delete(p);
+							transaction.commit();
+						}
+						
+						
+						
+					}
+					
+					
+					
+					session.close();
+					sessionControleur.close();
+					FenetrePrincipale.this.deleteId.setText("");
+					FenetrePrincipale.this.deleteFormulaire.dispose();
+			   }});
+		
+		panel.add(button);
+		panel.add(this.deleteId);
+		
+		this.deleteFormulaire.add(panel);
+	}
+	
+	
+	
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 		//  Auto-generated method stub

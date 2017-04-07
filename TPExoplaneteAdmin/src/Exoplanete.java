@@ -30,6 +30,13 @@ public class Exoplanete {
 		this.decouverte = decouverte;
 	}
 	
+	public Exoplanete(int id,String planete, String etoile, String typeEtoile, String masse, String rayon, String flux,
+			String temperature, String periode, String distance, String zone, String ist, String sph, String hzd,
+			String hzc, String hza, String pClasse, String hClasse, String phi, String distance2, String status,
+			String decouverte) {
+
+	}
+	
 	public static final int NBR_DE_VAR = 21;
 
 	protected int id;
@@ -249,6 +256,35 @@ public class Exoplanete {
 		this.id = 0;
 		this.planete = planete;
 		this.etoile = etoile;
+	}
+
+	public Exoplanete(int id,String planete, String etoile, String typeEtoile, String masse, String rayon, String flux,
+			String temperature, String periode, String distance, String zone, Float ist, Float sph, String hzd,
+			String hzc, String hza, String pClasse, String hClasse, Float phi, String distance2, String status,
+			String decouverte) {
+		super();
+		this.id = id;
+		this.planete = planete;
+		this.etoile = etoile;
+		this.typeEtoile = typeEtoile;
+		this.masse = masse;
+		this.rayon = rayon;
+		this.flux = flux;
+		this.temperature = temperature;
+		this.periode = periode;
+		this.distance = distance;
+		this.zone = zone;
+		this.ist = ist;
+		this.sph = sph;
+		this.hzd = hzd;
+		this.hzc = hzc;
+		this.hza = hza;
+		this.pClasse = pClasse;
+		this.hClasse = hClasse;
+		this.phi = phi;
+		this.distance2 = distance2;
+		this.status = status;
+		this.decouverte = decouverte;
 	}
 
 	public int getId() {
