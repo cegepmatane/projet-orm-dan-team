@@ -13,9 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import com.fabrice.Exoplanetes.orm.ExoplaneteORM;
-import com.fabrice.Exoplanetes.persistance.ExoplaneteMemento;
 import com.fabrice.Exoplanetes.persistance.ExoplanetePersistance;
-import com.fabrice.Exoplanetes.persistance.Memento;
 
 @SuppressWarnings("serial")
 public class PanneauOngletExoplanette extends JPanel
