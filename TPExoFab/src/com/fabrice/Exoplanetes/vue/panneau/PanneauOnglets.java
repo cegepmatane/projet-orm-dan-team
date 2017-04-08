@@ -6,9 +6,11 @@ import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
-import com.fabrice.Exoplanetes.orm.Exoplanete;
+import com.fabrice.Exoplanetes.orm.ExoplaneteORM;
 import com.fabrice.Exoplanetes.vue.panneau.onglet.PanneauOngletAdmin;
 import com.fabrice.Exoplanetes.vue.panneau.onglet.PanneauOngletClient;
+import com.fabrice.Exoplanetes.vue.panneau.onglet.admin.PanneauOngletAdminEffacer;
+import com.fabrice.Exoplanetes.vue.panneau.onglet.admin.PanneauOngletAdminModifier;
 import com.fabrice.Exoplanetes.vue.panneau.onglet.client.PanneauOngletExoplanette;
 
 @SuppressWarnings("serial")
@@ -48,10 +50,15 @@ public class PanneauOnglets extends JPanel
 		onglets.add("Admin", panneauOngletAdmin);
 	}
 	
-	public void construirePanneauListeExoplanette(List<Exoplanete> listeExoplanette)
+	public void construirePanneauxListeExoplanette(List<ExoplaneteORM> listeExoplanette)
 	{
 		PanneauOngletExoplanette panneauOngletExoplanette = panneauOngletClient.getPanneauOngletExoplanette();
+		PanneauOngletAdminEffacer panneauOngletAdminEffacer = panneauOngletAdmin.getPanneauOngletAdminEffacer();
+		PanneauOngletAdminModifier panneauOngletAdminModifier = panneauOngletAdmin.getPanneauOngletAdminModifier();
 		
 		panneauOngletExoplanette.construirePanneauListeExoplanette(listeExoplanette);
+		
+		panneauOngletAdminEffacer.ConstruirePanneauListeExoplanette(listeExoplanette);
+		panneauOngletAdminModifier.ConstruirePanneauListeExoplanette(listeExoplanette);
 	}
 }

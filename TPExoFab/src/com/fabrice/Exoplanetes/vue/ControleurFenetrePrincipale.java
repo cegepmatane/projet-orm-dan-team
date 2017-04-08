@@ -8,7 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.fabrice.Exoplanetes.orm.Exoplanete;
+import com.fabrice.Exoplanetes.orm.ExoplaneteORM;
 import com.fabrice.Exoplanetes.vue.panneau.PanneauOnglets;
 
 public class ControleurFenetrePrincipale 
@@ -16,7 +16,7 @@ public class ControleurFenetrePrincipale
 	protected FenetrePricipale fenetrePricipale;
 	
 	private Session session;
-	private List<Exoplanete> listeExoplanete;
+	private List<ExoplaneteORM> listeExoplanete;
 	
 	private PanneauOnglets panneauOnglets;
 	
@@ -25,14 +25,16 @@ public class ControleurFenetrePrincipale
 		this.fenetrePricipale = fenetrePricipale;
 		this.panneauOnglets = this.fenetrePricipale.getPanneauOnglets();
 		
+		//TODO: a voir, créeer class pour Confiration
 		Configuration configuration = new Configuration();
-		configuration.addClass(com.fabrice.Exoplanetes.orm.Exoplanete.class);
+		configuration.addClass(com.fabrice.Exoplanetes.orm.ExoplaneteORM.class);
 		SessionFactory sessionControleur = configuration.buildSessionFactory();
 		Session session = sessionControleur.openSession();
 		
 		this.session = session;
 		
 		construireListeExoplanette();
+		//ecrireLogListeExoplanette();
 		
 		session.close();
 		sessionControleur.close();
@@ -41,10 +43,10 @@ public class ControleurFenetrePrincipale
 	@SuppressWarnings({ "rawtypes", "deprecation" })
 	public void ecrireLogListeExoplanette()
 	{
-		Iterator listeExoplanete = this.session.createQuery("from Exoplanete").iterate();
+		Iterator listeExoplanete = this.session.createQuery("from ExoplaneteORM").iterate();
 		while(listeExoplanete.hasNext())
 		{
-			Exoplanete exoplanete = (Exoplanete)listeExoplanete.next();
+			ExoplaneteORM exoplanete = (ExoplaneteORM)listeExoplanete.next();
 			System.out.println("Exoplanete : " + exoplanete.getPlanete());
 		}
 	}
@@ -52,17 +54,18 @@ public class ControleurFenetrePrincipale
 	@SuppressWarnings({ "rawtypes", "deprecation" })
 	private void construireListeExoplanette()
 	{
-		this.listeExoplanete = new ArrayList<Exoplanete>();
+		this.listeExoplanete = new ArrayList<ExoplaneteORM>();
 		
-		Iterator listeExoplaneteIterator = this.session.createQuery("from Exoplanete").iterate();
+		Iterator listeExoplaneteIterator = this.session.createQuery("from ExoplaneteORM").iterate();
 		while(listeExoplaneteIterator.hasNext())
 		{
-			Exoplanete exoplanete = new Exoplanete();
-			exoplanete = (Exoplanete)listeExoplaneteIterator.next();
+			ExoplaneteORM exoplanete = new ExoplaneteORM();
+			
+			exoplanete = (ExoplaneteORM) listeExoplaneteIterator.next();
 			this.listeExoplanete.add(exoplanete);
 		}
 		
-		panneauOnglets.construirePanneauListeExoplanette(this.listeExoplanete);
+		panneauOnglets.construirePanneauxListeExoplanette(this.listeExoplanete);
 		panneauOnglets.revalidate();
 	}
 

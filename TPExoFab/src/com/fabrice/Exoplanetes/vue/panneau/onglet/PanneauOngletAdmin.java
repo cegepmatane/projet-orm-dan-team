@@ -7,6 +7,7 @@ import javax.swing.JTabbedPane;
 
 import com.fabrice.Exoplanetes.vue.panneau.onglet.admin.PanneauOngletAdminAjouter;
 import com.fabrice.Exoplanetes.vue.panneau.onglet.admin.PanneauOngletAdminEffacer;
+import com.fabrice.Exoplanetes.vue.panneau.onglet.admin.PanneauOngletAdminModifier;
 
 @SuppressWarnings("serial")
 public class PanneauOngletAdmin extends JPanel
@@ -15,7 +16,8 @@ public class PanneauOngletAdmin extends JPanel
 	private JTabbedPane onglets;
 	private PanneauOngletAdminAjouter panneauOngletAdminAjouter;
 	private PanneauOngletAdminEffacer panneauOngletAdminEffacer;
-	
+	private PanneauOngletAdminModifier panneauOngletAdminModifier;
+
 	public PanneauOngletAdmin()
 	{
 		super(new GridLayout(1, 1));
@@ -40,8 +42,25 @@ public class PanneauOngletAdmin extends JPanel
 		
 		panneauOngletAdminAjouter = new PanneauOngletAdminAjouter();
 		panneauOngletAdminEffacer = new PanneauOngletAdminEffacer();
+		panneauOngletAdminModifier = new PanneauOngletAdminModifier();
 		
 		onglets.add("Ajouter", panneauOngletAdminAjouter);
+		onglets.add("Modifier", panneauOngletAdminModifier);
 		onglets.add("Effacer", panneauOngletAdminEffacer);
+	}
+	
+	public PanneauOngletAdminAjouter getPanneauOngletAdminAjouter() 
+	{
+		return panneauOngletAdminAjouter;
+	}
+
+	public PanneauOngletAdminEffacer getPanneauOngletAdminEffacer() 
+	{
+		return panneauOngletAdminEffacer;
+	}
+
+	public PanneauOngletAdminModifier getPanneauOngletAdminModifier() 
+	{
+		return panneauOngletAdminModifier;
 	}
 }

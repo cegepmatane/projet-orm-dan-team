@@ -2,22 +2,21 @@ package com.fabrice.Exoplanetes.vue.panneau.onglet.client;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTable;
 
-import com.fabrice.Exoplanetes.orm.Exoplanete;
+import com.fabrice.Exoplanetes.Exoplanete;
+import com.fabrice.Exoplanetes.orm.ExoplaneteORM;
 
 @SuppressWarnings("serial")
 public class PanneauOngletExoplanette extends JPanel
 {
 	private JPanel panneauOngletExoplanette;
-	private JTable table;
 	
 	public PanneauOngletExoplanette()
 	{
@@ -34,49 +33,32 @@ public class PanneauOngletExoplanette extends JPanel
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public void construirePanneauListeExoplanette(List<Exoplanete> listeExoplanette)
+	public void construirePanneauListeExoplanette(List<ExoplaneteORM> listeExoplanette)
 	{
 		Iterator listeExoplaneteIterator = listeExoplanette.iterator();
 		
-		Object nomDeCologne[] = {
-				"Planete",
-				"Étoile"
-		};
-		Object[][]  donnees= new Object[listeExoplanette.size()][3];
+		JPanel panneauListeExoplanette = new JPanel();
+		panneauListeExoplanette.setLayout(new GridLayout(listeExoplanette.size(), 1));	
 		
-		int compteur = 0;
 		while(listeExoplaneteIterator.hasNext())
 		{
 			Exoplanete exoplanete = (Exoplanete)listeExoplaneteIterator.next();
-			donnees[compteur][0] = exoplanete.getPlanete();
-			donnees[compteur][1] = exoplanete.getEtoile();
-			compteur++;
+			
+			JPanel panel = new JPanel();
+			JLabel nomExoplanete = new JLabel(exoplanete.getPlanete());
+			JButton buttonSauvegarder = new JButton("Save");
+			
+			panel.add(nomExoplanete);
+			panel.add(buttonSauvegarder);
+			
+			panneauListeExoplanette.add(panel);
 		}
 		
-		//TODO: faire une class panneauListeExoplanette
-		JPanel panneauListeExoplanette = new JPanel(new BorderLayout());
+		JScrollPane scrollPane = new JScrollPane(panneauListeExoplanette);
 		
-		table = new JTable(donnees, nomDeCologne);
+		JPanel panelSroll = new JPanel(new BorderLayout());
+		panelSroll.add(scrollPane, BorderLayout.CENTER);
 		
-		table.addMouseListener(new Click());
-		//table.isCellEditable(row, column)
-		
-		JScrollPane scrollPane = new JScrollPane(table);
-		
-		panneauListeExoplanette.add(scrollPane, BorderLayout.CENTER);
-		
-		panneauOngletExoplanette.setLayout(new BorderLayout());
-		panneauOngletExoplanette.add(panneauListeExoplanette, BorderLayout.CENTER);
+		panneauOngletExoplanette.add(panelSroll);
 	}
-	
-	class Click extends MouseAdapter
-	{
-        public void mouseClicked(MouseEvent e) 
-        {
-            if(e.getClickCount()==1)
-            {
-            	System.out.println(table.getSelectedRow());
-            }
-        }
-    }
 }

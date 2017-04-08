@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 2.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-2.0.dtd">
+<hibernate-mapping>
+
+<class name="com.fabrice.Exoplanetes.orm.ExoplaneteORM" table="exoplanetes">
+
+	<id name="id" column="id_exoplanete" type="int">
+		<generator class="native"/>
+	</id>
+	
+	<property name="planete" column="planete" type="string" not-null="true"/>
+	<property name="etoile" column="etoile" type="string" not-null="false"/>
+	<property name="masse" column="masse" type="string" not-null="false"/>
+	<property name="rayon" column="rayon" type="string" not-null="false"/>
+	<property name="flux" column="flux" type="string" not-null="false"/>
+	<property name="temperature" column="temperature" type="string" not-null="false"/>
+	<property name="periode" column="periode" type="string" not-null="false"/>
+	<property name="distance" column="distance" type="string" not-null="false"/>
+	<property name="zone" column="zone" type="string" not-null="false"/>
+	<property name="ist" column="ist" type="string" not-null="false"/>
+	<property name="sph" column="sph" type="string" not-null="false"/>
+	<property name="hzd" column="hzd" type="string" not-null="false"/>
+	<property name="hzc" column="hzc" type="string" not-null="false"/>
+	<property name="hza" column="hza" type="string" not-null="false"/>
+	<property name="pClasse" column="pClasse" type="string" not-null="false"/>
+	<property name="hClasse" column="hClasse" type="string" not-null="false"/>
+	<property name="phi" column="phi" type="string" not-null="false"/>
+	<property name="status" column="status" type="string" not-null="false"/>
+	<property name="decouverte" column="decouverte" type="string" not-null="false"/>
+</class>
+
+</hibernate-mapping>

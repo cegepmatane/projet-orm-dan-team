@@ -1,12 +1,10 @@
 package com.fabrice.Exoplanetes.vue.panneau.onglet;
 
 import java.awt.GridLayout;
-import java.util.List;
 
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
-import com.fabrice.Exoplanetes.orm.Exoplanete;
 import com.fabrice.Exoplanetes.vue.panneau.onglet.client.PanneauOngletExoplanette;
 import com.fabrice.Exoplanetes.vue.panneau.onglet.client.PanneauOngletMemento;
 import com.fabrice.Exoplanetes.vue.panneau.onglet.client.PanneauOngletRecherche;
@@ -21,7 +19,7 @@ public class PanneauOngletClient extends JPanel
 	private PanneauOngletExoplanette panneauOngletExoplanette;
 	private PanneauOngletMemento panneauOngletMemento;
 	private PanneauOngletRecherche panneauOngletRecherche;
-	
+
 	public PanneauOngletClient()
 	{
 		super(new GridLayout(1, 1));
@@ -53,13 +51,18 @@ public class PanneauOngletClient extends JPanel
 		ongletsClient.addTab("Recherche", panneauOngletRecherche);
 	}
 	
-	public void construirePanneauListeExoplanette(List<Exoplanete> listeExoplanette)
-	{
-		panneauOngletExoplanette.construirePanneauListeExoplanette(listeExoplanette);
-	}
-	
-	public PanneauOngletExoplanette getPanneauOngletExoplanette()
+	public PanneauOngletExoplanette getPanneauOngletExoplanette() 
 	{
 		return panneauOngletExoplanette;
+	}
+
+	public PanneauOngletMemento getPanneauOngletMemento() 
+	{
+		return panneauOngletMemento;
+	}
+
+	public PanneauOngletRecherche getPanneauOngletRecherche() 
+	{
+		return panneauOngletRecherche;
 	}
 }
