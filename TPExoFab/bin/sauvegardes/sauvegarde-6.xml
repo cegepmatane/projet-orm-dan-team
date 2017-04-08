@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_101" class="java.beans.XMLDecoder">
+ <object class="com.fabrice.Exoplanetes.orm.ExoplaneteORM_$$_jvstaa5_0">
+  <void property="distance">
+   <string>2017-08-13 00:00:00</string>
+  </void>
+  <void property="etoile">
+   <string>Wolf 1061</string>
+  </void>
+  <void property="flux">
+   <string>0.60</string>
+  </void>
+  <void property="id">
+   <int>6</int>
+  </void>
+  <void property="masse">
+   <string>= 4.3</string>
+  </void>
+  <void property="periode">
+   <string>2017-09-17 00:00:00</string>
+  </void>
+  <void property="planete">
+   <string>Wolf 1061c</string>
+  </void>
+  <void property="rayon">
+   <string>1.1 – 1.6 – 2.0</string>
+  </void>
+  <void property="temperature">
+   <string>223</string>
+  </void>
+  <void property="zone">
+   <string>conservative habitable</string>
+  </void>
+ </object>
+</java>

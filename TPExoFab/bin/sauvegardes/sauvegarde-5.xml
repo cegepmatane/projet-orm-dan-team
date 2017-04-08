@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_101" class="java.beans.XMLDecoder">
+ <object class="com.fabrice.Exoplanetes.orm.ExoplaneteORM_$$_jvstaa5_0">
+  <void property="decouverte">
+   <string>2015</string>
+  </void>
+  <void property="distance">
+   <string>1402</string>
+  </void>
+  <void property="etoile">
+   <string>Kepler-452</string>
+  </void>
+  <void property="flux">
+   <string>2017-11-01 00:00:00</string>
+  </void>
+  <void property="hClasse">
+   <string>Mésoplanète</string>
+  </void>
+  <void property="hza">
+   <string>-0.30</string>
+  </void>
+  <void property="hzc">
+   <string>-0.15</string>
+  </void>
+  <void property="hzd">
+   <string>-0.61</string>
+  </void>
+  <void property="id">
+   <int>5</int>
+  </void>
+  <void property="ist">
+   <string>0.83</string>
+  </void>
+  <void property="masse">
+   <string>19.8 – 4.7 – 1.9</string>
+  </void>
+  <void property="pClasse">
+   <string>Super-terrienne chaude</string>
+  </void>
+  <void property="periode">
+   <string>384.8</string>
+  </void>
+  <void property="planete">
+   <string>Kepler-452b</string>
+  </void>
+  <void property="rayon">
+   <string>1.50, 1.63</string>
+  </void>
+  <void property="sph">
+   <string>0.93</string>
+  </void>
+  <void property="status">
+   <string>Confirmée</string>
+  </void>
+  <void property="temperature">
+   <string>265+15 -13</string>
+  </void>
+  <void property="zone">
+   <string>conservative habitable</string>
+  </void>
+ </object>
+</java>

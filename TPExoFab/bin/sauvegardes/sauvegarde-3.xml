@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_101" class="java.beans.XMLDecoder">
+ <object class="com.fabrice.Exoplanetes.orm.ExoplaneteORM_$$_jvst4fd_0">
+  <void property="decouverte">
+   <string>2011</string>
+  </void>
+  <void property="distance">
+   <string>23.62</string>
+  </void>
+  <void property="etoile">
+   <string>Gliese 667 C</string>
+  </void>
+  <void property="flux">
+   <string>0.88</string>
+  </void>
+  <void property="hClasse">
+   <string>Mésoplanète</string>
+  </void>
+  <void property="hza">
+   <string> +0.21</string>
+  </void>
+  <void property="hzc">
+   <string>-0.15</string>
+  </void>
+  <void property="hzd">
+   <string>-0.62</string>
+  </void>
+  <void property="id">
+   <int>3</int>
+  </void>
+  <void property="ist">
+   <string>0.84</string>
+  </void>
+  <void property="masse">
+   <string>=3.8</string>
+  </void>
+  <void property="pClasse">
+   <string>Terrienne chaude</string>
+  </void>
+  <void property="periode">
+   <string>28.143 ± 0.029</string>
+  </void>
+  <void property="planete">
+   <string>Gliese 667 Cc</string>
+  </void>
+  <void property="rayon">
+   <string>1.1 – 1.5 – 2.0</string>
+  </void>
+  <void property="sph">
+   <string>0.64</string>
+  </void>
+  <void property="status">
+   <string>Confirmée</string>
+  </void>
+  <void property="temperature">
+   <string>277</string>
+  </void>
+  <void property="zone">
+   <string>conservative habitable</string>
+  </void>
+ </object>
+</java>

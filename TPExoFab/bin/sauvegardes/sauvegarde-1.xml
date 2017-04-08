@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_101" class="java.beans.XMLDecoder">
+ <object class="com.fabrice.Exoplanetes.orm.ExoplaneteORM_$$_jvst4fd_0">
+  <void property="decouverte">
+   <string>Préhistorique</string>
+  </void>
+  <void property="etoile">
+   <string>Sun</string>
+  </void>
+  <void property="flux">
+   <string>1.00</string>
+  </void>
+  <void property="hClasse">
+   <string>Mésoplanète</string>
+  </void>
+  <void property="hza">
+   <string>-0.52</string>
+  </void>
+  <void property="hzc">
+   <string>-0.31</string>
+  </void>
+  <void property="hzd">
+   <string>-0.50</string>
+  </void>
+  <void property="id">
+   <int>1</int>
+  </void>
+  <void property="ist">
+   <string>1.00</string>
+  </void>
+  <void property="masse">
+   <string>1.00</string>
+  </void>
+  <void property="pClasse">
+   <string>Terrienne chaude</string>
+  </void>
+  <void property="periode">
+   <string>365.24</string>
+  </void>
+  <void property="phi">
+   <string>4.37</string>
+  </void>
+  <void property="planete">
+   <string>Earth</string>
+  </void>
+  <void property="rayon">
+   <string>1.00</string>
+  </void>
+  <void property="sph">
+   <string>0.72</string>
+  </void>
+  <void property="status">
+   <string>Pas une exoplanète</string>
+  </void>
+  <void property="temperature">
+   <string>255</string>
+  </void>
+  <void property="zone">
+   <string>conservative habitable</string>
+  </void>
+ </object>
+</java>

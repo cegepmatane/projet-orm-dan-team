@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_101" class="java.beans.XMLDecoder">
+ <object class="com.fabrice.Exoplanetes.orm.ExoplaneteORM_$$_jvst4fd_0">
+  <void property="distance">
+   <string>4.22</string>
+  </void>
+  <void property="etoile">
+   <string>Proxima Centauri</string>
+  </void>
+  <void property="flux">
+   <string>0.65</string>
+  </void>
+  <void property="id">
+   <int>2</int>
+  </void>
+  <void property="masse">
+   <string>=1.3</string>
+  </void>
+  <void property="periode">
+   <string>11.186</string>
+  </void>
+  <void property="planete">
+   <string>Proxima Centauri b</string>
+  </void>
+  <void property="rayon">
+   <string>0.8 – 1.1 – 1.4</string>
+  </void>
+  <void property="temperature">
+   <string>234</string>
+  </void>
+  <void property="zone">
+   <string>conservative habitable</string>
+  </void>
+ </object>
+</java>
