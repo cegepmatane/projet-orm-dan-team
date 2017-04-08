@@ -56,13 +56,6 @@ public class PanneauOngletExoplanette extends JPanel
 				@Override
 				public void actionPerformed(ActionEvent arg0) 
 				{
-					/*Memento memento = new Memento();
-					ExoplaneteMemento exoplaneteMemento = new ExoplaneteMemento(exoplanete);
-					memento.ajouterMemento(exoplanete.getId(), exoplaneteMemento);*/
-					
-					//System.out.println("id : " + exoplanete.getId());
-					
-					//memento.ajouterMemento(exoplaneteMemento.getId(), exoplaneteMemento);
 					try 
 					{
 						ExoplanetePersistance.write(exoplanete, "sauvegarde-" + exoplanete.getId());
@@ -71,31 +64,6 @@ public class PanneauOngletExoplanette extends JPanel
 					{
 						evenement.printStackTrace();
 					}
-					
-					/*File dossierMemento = new File("src/sauvegardes/");
-					
-					if(dossierMemento.exists())
-					{
-						File[] dossierListe = dossierMemento.listFiles();
-						
-						for (File fichier : dossierListe) 
-						{
-							Exoplanete exoplanete = ExoplanetePersistance.read(fichier.getName());
-							ExoplaneteMemento exoplaneteMemento = new ExoplaneteMemento(exoplanete);
-							memento.ajouterMemento(exoplanete.getId(), exoplaneteMemento);
-						}
-					}*/
-					
-					
-					
-					// TODO Auto-generated method stub
-					
-					//exoplaneteMemento.setId(exoplanete.getId());
-					//boolean fichierEstAbsent = false;
-					
-					
-					
-					//memento.ajouterMemento(id, exoplanete);
 				}
 			});
 			
