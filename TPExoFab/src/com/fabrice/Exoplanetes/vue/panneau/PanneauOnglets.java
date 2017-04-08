@@ -6,12 +6,14 @@ import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import com.fabrice.Exoplanetes.Exoplanete;
 import com.fabrice.Exoplanetes.orm.ExoplaneteORM;
 import com.fabrice.Exoplanetes.vue.panneau.onglet.PanneauOngletAdmin;
 import com.fabrice.Exoplanetes.vue.panneau.onglet.PanneauOngletClient;
 import com.fabrice.Exoplanetes.vue.panneau.onglet.admin.PanneauOngletAdminEffacer;
 import com.fabrice.Exoplanetes.vue.panneau.onglet.admin.PanneauOngletAdminModifier;
 import com.fabrice.Exoplanetes.vue.panneau.onglet.client.PanneauOngletExoplanette;
+import com.fabrice.Exoplanetes.vue.panneau.onglet.client.PanneauOngletMemento;
 
 @SuppressWarnings("serial")
 public class PanneauOnglets extends JPanel
@@ -60,5 +62,12 @@ public class PanneauOnglets extends JPanel
 		
 		panneauOngletAdminEffacer.ConstruirePanneauListeExoplanette(listeExoplanette);
 		panneauOngletAdminModifier.ConstruirePanneauListeExoplanette(listeExoplanette);
+	}
+	
+	public void construitrePanneauOngletMemento(List<Exoplanete> listeExoplanette)
+	{
+		PanneauOngletMemento panneauOngletMemento = panneauOngletClient.getPanneauOngletMemento();
+		
+		panneauOngletMemento.construirePanneauListeExoplanette(listeExoplanette);
 	}
 }

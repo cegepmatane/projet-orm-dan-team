@@ -98,7 +98,12 @@ public class ControleurFenetrePrincipale
 			
 		}
 		
-		
+		construitreOngletMemento(listeExoplanete);
+	}
+	
+	private void construitreOngletMemento(List<Exoplanete> listeExoplanete)
+	{
+		panneauOnglets.construitrePanneauOngletMemento(listeExoplanete);
 	}
 
 }

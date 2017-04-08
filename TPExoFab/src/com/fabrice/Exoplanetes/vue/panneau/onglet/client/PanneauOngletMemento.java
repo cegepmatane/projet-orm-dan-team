@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
+import com.fabrice.Exoplanetes.Exoplanete;
 import com.fabrice.Exoplanetes.orm.ExoplaneteORM;
 
 @SuppressWarnings("serial")
@@ -34,10 +35,10 @@ public class PanneauOngletMemento extends JPanel
 	}
 
 	@SuppressWarnings("rawtypes")
-	public void construirePanneauListeExoplanette(/*List<ExoplaneteORM> listeExoplanette*/)
+	public void construirePanneauListeExoplanette(List<Exoplanete> listeExoplanette)
 	{
 		
-		/*Iterator listeExoplaneteIterator = listeExoplanette.iterator();
+		Iterator listeExoplaneteIterator = listeExoplanette.iterator();
 		
 		JPanel panneauListeExoplanette = new JPanel();
 		panneauListeExoplanette.setLayout(new GridLayout(listeExoplanette.size(), 1));	
@@ -47,9 +48,9 @@ public class PanneauOngletMemento extends JPanel
 			ExoplaneteORM exoplanete = (ExoplaneteORM)listeExoplaneteIterator.next();
 			
 			JPanel panel = new JPanel();
-			//JLabel nomExoplanete = new JLabel(exoplanete.getPlanete());
+			JLabel nomExoplanete = new JLabel(exoplanete.getPlanete());
 			
-			//panel.add(nomExoplanete);
+			panel.add(nomExoplanete);
 			
 			panneauListeExoplanette.add(panel);
 		}
@@ -59,6 +60,6 @@ public class PanneauOngletMemento extends JPanel
 		JPanel panelSroll = new JPanel(new BorderLayout());
 		panelSroll.add(scrollPane, BorderLayout.CENTER);
 		
-		panneauOngletMemento.add(panelSroll);*/
+		panneauOngletMemento.add(panelSroll);
 	}
 }
