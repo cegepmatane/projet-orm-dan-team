@@ -1,5 +1,6 @@
 package com.fabrice.Exoplanetes.vue;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -8,7 +9,10 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import com.fabrice.Exoplanetes.Exoplanete;
 import com.fabrice.Exoplanetes.orm.ExoplaneteORM;
+import com.fabrice.Exoplanetes.persistance.ExoplaneteMemento;
+import com.fabrice.Exoplanetes.persistance.ExoplanetePersistance;
 import com.fabrice.Exoplanetes.vue.panneau.PanneauOnglets;
 
 public class ControleurFenetrePrincipale 
@@ -16,11 +20,12 @@ public class ControleurFenetrePrincipale
 	protected FenetrePricipale fenetrePricipale;
 	
 	private Session session;
-	private List<ExoplaneteORM> listeExoplanete;
+	private List<ExoplaneteORM> listeExoplaneteORM;
+	private List<Exoplanete> listeExoplanete;
 	
 	private PanneauOnglets panneauOnglets;
 	
-	public ControleurFenetrePrincipale(FenetrePricipale fenetrePricipale)
+	public ControleurFenetrePrincipale(FenetrePricipale fenetrePricipale) throws Exception
 	{
 		this.fenetrePricipale = fenetrePricipale;
 		this.panneauOnglets = this.fenetrePricipale.getPanneauOnglets();
@@ -35,6 +40,7 @@ public class ControleurFenetrePrincipale
 		
 		construireListeExoplanette();
 		//ecrireLogListeExoplanette();
+		initialiserListeMemento();
 		
 		session.close();
 		sessionControleur.close();
@@ -52,9 +58,9 @@ public class ControleurFenetrePrincipale
 	}
 	
 	@SuppressWarnings({ "rawtypes", "deprecation" })
-	private void construireListeExoplanette()
+	private void construireListeExoplanette() throws Exception
 	{
-		this.listeExoplanete = new ArrayList<ExoplaneteORM>();
+		this.listeExoplaneteORM = new ArrayList<ExoplaneteORM>();
 		
 		Iterator listeExoplaneteIterator = this.session.createQuery("from ExoplaneteORM").iterate();
 		while(listeExoplaneteIterator.hasNext())
@@ -62,11 +68,37 @@ public class ControleurFenetrePrincipale
 			ExoplaneteORM exoplanete = new ExoplaneteORM();
 			
 			exoplanete = (ExoplaneteORM) listeExoplaneteIterator.next();
-			this.listeExoplanete.add(exoplanete);
+			this.listeExoplaneteORM.add(exoplanete);
 		}
 		
-		panneauOnglets.construirePanneauxListeExoplanette(this.listeExoplanete);
+		panneauOnglets.construirePanneauxListeExoplanette(this.listeExoplaneteORM);
 		panneauOnglets.revalidate();
+	}
+	
+	private void initialiserListeMemento() throws Exception
+	{
+		listeExoplanete = new ArrayList<Exoplanete>();
+		
+		File dossier = new File("src/sauvegardes/");
+		File[] dossierListe = dossier.listFiles();
+		for (File fichier : dossierListe) 
+		{
+			try
+			{
+				Exoplanete fileExoplanete = ExoplanetePersistance.read(fichier.getName());
+				ExoplaneteMemento exoplaneteMemento = new ExoplaneteMemento(fileExoplanete);
+				//memorisation.ajouterMemento(new Date().getTime(), exoplanetePersistance);
+				System.out.println(" Exo : " + exoplaneteMemento.getExoplanete().getEtoile());
+				listeExoplanete.add(exoplaneteMemento.getExoplanete());
+			}
+			catch (Exception e) 
+			{
+				// TODO: handle exception
+			}
+			
+		}
+		
+		
 	}
 
 }

@@ -6,7 +6,7 @@ import com.fabrice.Exoplanetes.vue.FenetrePricipale;
 public class Exoplanetes 
 {
 	@SuppressWarnings("unused")
-	public static void main(String[] args) 
+	public static void main(String[] args) throws Exception 
 	{
 		FenetrePricipale fenetrePricipale = new FenetrePricipale();
 		
