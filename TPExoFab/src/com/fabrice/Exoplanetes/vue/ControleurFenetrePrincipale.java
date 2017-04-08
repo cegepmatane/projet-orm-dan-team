@@ -88,7 +88,7 @@ public class ControleurFenetrePrincipale
 				Exoplanete fileExoplanete = ExoplanetePersistance.read(fichier.getName());
 				ExoplaneteMemento exoplaneteMemento = new ExoplaneteMemento(fileExoplanete);
 				//memorisation.ajouterMemento(new Date().getTime(), exoplanetePersistance);
-				System.out.println(" Exo : " + exoplaneteMemento.getExoplanete().getEtoile());
+				//System.out.println(" Exo : " + exoplaneteMemento.getExoplanete().getEtoile());
 				listeExoplanete.add(exoplaneteMemento.getExoplanete());
 			}
 			catch (Exception e) 
